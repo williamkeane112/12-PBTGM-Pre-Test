@@ -35,9 +35,19 @@
                 @if ($page === 'login' || $page === 'register')
                 @else
                 @auth
-                <div class="flex justify-end mb-2">
-                    <a href="/profil/{{ Auth::id() }}" class="px-6 py-1 text-xl border border-blue-500 rounded-full flex items-center hover:bg-blue-500 duration-700 hover:text-white">Profil</a>
+                <div class="flex justify-end gap-3 items-center">
+                    <div class="flex items-center justify-end mb-2">
+                        <a href="/profil/{{ Auth::id() }}" class="px-6 py-1 text-xl border border-blue-500 rounded-full flex items-center hover:bg-blue-500 duration-700 hover:text-white">Profil</a>
+                    </div>
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <div class="flex justify-end mb-2">
+                            <button class="px-6 py-1 text-xl border border-red-500 rounded-full flex items-center hover:bg-red-500 duration-700 hover:text-white">Logout</button>
+                        </div>
+                    </form>
                 </div>
+               
+             
                 @endauth
                 @guest
                 <div class="flex justify-end mb-2">

@@ -116,6 +116,12 @@ class userController extends Controller
         $user->save();
         return redirect()->intended('/')->with('success', 'Profile updated successfully.');
     }
+    public function logout(Request $request){
+        Auth::logout(); 
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->intended('/login');
+    }
 
     /**
      * Remove the specified resource from storage.
