@@ -1,5 +1,10 @@
 @extends('Ui.main')
 @section('content')
+@if(session()->has('success'))
+<div class="px-2 py-2 border border-blue-500">
+    <p class="alert alert-info">{{ session('success') }}</p>
+</div>
+@endif
     <div class="flex flex-wrap">
         <div class="w-[67%] gap-4">
             <div class="flex justify-between items-center text-lg ">

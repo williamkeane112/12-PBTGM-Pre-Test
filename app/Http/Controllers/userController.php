@@ -37,20 +37,20 @@ class userController extends Controller
     /**
      * Create User Data
      */
-    public function StoreRegister(Request $request) {
-        $validate = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:4'
-        ]);
-        $user = User::create([
-            'name' => $validate['name'],
-            'email' => $validate['email'],
-            'password' => Hash::make($validate['password'])
-        ]);
-        
-        return redirect()->intended('/login')->with('success', 'create user  successfully');
-    }
+        public function StoreRegister(Request $request) {
+            $validate = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|max:255|unique:users',
+                'password' => 'required|string|min:4'
+            ]);
+            $user = User::create([
+                'name' => $validate['name'],
+                'email' => $validate['email'],
+                'password' => Hash::make($validate['password'])
+            ]);
+            
+            return redirect()->intended('/login')->with('success', 'create user  successfully');
+        }
     
     public function Login(Request $request) {
         $validate = $request->validate([
@@ -120,7 +120,7 @@ class userController extends Controller
         Auth::logout(); 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->intended('/login');
+        return redirect()->intended('/login')->with('success', 'Profile updated successfully.');
     }
 
     /**

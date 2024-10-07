@@ -1,5 +1,11 @@
 @extends('Ui.main')
 @section('content')
+@if(session()->has('success'))
+<div class="px-2 py-2 border border-blue-500">
+    <p class="alert alert-info">{{ session('success') }}</p>
+</div>
+@endif
+
     <div class="w-[60%] mx-auto bg-[#e6f0fa] border border-blue-500 rounded-md">
         <div class="mt-10 px-7">
             <form action="/Tologin" method="post">
